@@ -6,11 +6,11 @@ function UsersSession(){
     this.session_time = null
 
     this.set_start_time = () => {
-        this.start_time = new Date()
+        this.start_time = Math.round(new Date() / 1000)
     }
 
     this.set_end_time = () => {
-        this.end_time = new Date()
+        this.end_time = Math.round(new Date() / 1000)
         this.session_time = this.end_time - this.start_time
     }
 
