@@ -10,7 +10,7 @@ const publicDir = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
 
-const UsersSession = require('./models/users_session.js')
+const UsersSession = require('./models/Users_session.js')
 
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
