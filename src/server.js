@@ -20,8 +20,6 @@ hbs.registerPartials(partialsPath)
 // Setting up static directory
 app.use(express.static(publicDir))
 
-let us = new UsersSession()
-let sessions = []
 
 app.get('', (req, res) => {
     res.render('index')
@@ -35,17 +33,18 @@ app.get('/get-data', (req, res) => {
 })
 
 app.get('/client', (req, res) => {
-
-    us.set_user_ip(req.socket.remoteAddress)
+    let url_ = ''
+    let us = new UsersSession(req.socket.remoteAddress, url_)
     us.set_start_time()
-
+    us.add_user_to_DB()
     res.status(200).send()
 })
 
 app.get('/client-exit', (req, res) => {
+    let url_ = ''
+    let us = new UsersSession(req.socket.remoteAddress, url_)
     us.set_end_time()
-    sessions.push(us)
-
+    us.update_user_to_DB()
     res.status(200).send()
 })
 
